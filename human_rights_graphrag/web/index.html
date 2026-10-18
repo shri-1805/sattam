@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore fundamental human-rights provisions relevant to a scenario."
+    />
+    <meta name="theme-color" content="#f7f6f2" />
+    <title>Rights &amp; Remedies — Human Rights Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Application sidebar">
+        <a class="brand" href="/" aria-label="Rights and Remedies home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none">
+              <path d="M18 4.5v27M6.5 12h23M9 12 4 23h10L9 12Zm18 0-5 11h10l-5-11Z" />
+              <path d="M12 31h12" />
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>Rights &amp; Remedies</strong>
+            <span>Human rights assistant</span>
+          </span>
+        </a>
+
+        <button class="new-chat-button" id="new-chat" type="button">
+          <span aria-hidden="true">＋</span>
+          New conversation
+        </button>
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">YOUR SPACE</p>
+          <div class="conversation-item" aria-current="page">
+            <span class="conversation-dot" aria-hidden="true"></span>
+            <span>Human rights inquiry</span>
+            <span class="active-indicator" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="privacy-card">
+            <span class="privacy-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 2.5 3.5 5v4.6c0 4 2.8 6.5 6.5 7.9 3.7-1.4 6.5-3.9 6.5-7.9V5L10 2.5Z"
+                />
+                <path d="m7.4 9.9 1.8 1.8 3.7-3.8" />
+              </svg>
+            </span>
+            <div>
+              <strong>AI-assisted analysis</strong>
+              <p>Scenario text is sent to your configured model provider.</p>
+            </div>
+          </div>
+          <p class="sidebar-footnote">An aid for understanding, not legal advice.</p>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="mobile-brand">
+            <span class="brand-mark small" aria-hidden="true">
+              <svg viewBox="0 0 36 36" fill="none">
+                <path d="M18 4.5v27M6.5 12h23M9 12 4 23h10L9 12Zm18 0-5 11h10l-5-11Z" />
+                <path d="M12 31h12" />
+              </svg>
+            </span>
+            <span>Rights &amp; Remedies</span>
+          </div>
+          <div class="topbar-context">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Fundamental rights · India &amp; international</span>
+          </div>
+          <a class="about-link" href="#about">About this assistant <span aria-hidden="true">↗</span></a>
+        </header>
+
+        <section class="chat-layout" aria-label="Human rights chat">
+          <div class="conversation" id="conversation" aria-live="polite" aria-relevant="additions">
+            <div class="welcome" id="welcome">
+              <div class="welcome-eyebrow">
+                <span class="eyebrow-line"></span>
+                A CLEARER PATH TO YOUR RIGHTS
+              </div>
+              <h1>Let’s understand<br />what <span>protects you.</span></h1>
+              <p class="welcome-copy">
+                Describe what happened. I’ll help find the fundamental-rights
+                provisions that may apply, with the original text and why they
+                matter.
+              </p>
+              <div class="suggestions" aria-label="Example scenarios">
+                <p class="suggestions-label">NOT SURE WHERE TO START?</p>
+                <button
+                  class="suggestion-card"
+                  type="button"
+                  data-prompt="A peaceful protester was detained without being told the reason."
+                >
+                  <span class="suggestion-icon blue" aria-hidden="true">↗</span>
+                  <span>
+                    <strong>Detained without explanation</strong>
+                    <small>A peaceful protester is held without a reason.</small>
+                  </span>
+                  <span class="suggestion-arrow" aria-hidden="true">→</span>
+                </button>
+                <button
+                  class="suggestion-card"
+                  type="button"
+                  data-prompt="A qualified student was denied admission to a public school because of their religion."
+                >
+                  <span class="suggestion-icon gold" aria-hidden="true">◇</span>
+                  <span>
+                    <strong>Denied equal access to education</strong>
+                    <small>A student faces discrimination at a public school.</small>
+                  </span>
+                  <span class="suggestion-arrow" aria-hidden="true">→</span>
+                </button>
+                <button
+                  class="suggestion-card"
+                  type="button"
+                  data-prompt="A local authority stopped a journalist from publishing criticism of a government policy."
+                >
+                  <span class="suggestion-icon green" aria-hidden="true">≋</span>
+                  <span>
+                    <strong>Speech or expression restricted</strong>
+                    <small>A journalist is prevented from publishing criticism.</small>
+                  </span>
+                  <span class="suggestion-arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <form class="composer-wrap" id="chat-form">
+            <label class="sr-only" for="scenario-input">Describe your situation</label>
+            <div class="composer">
+              <textarea
+                id="scenario-input"
+                name="scenario"
+                rows="1"
+                maxlength="12000"
+                placeholder="Describe the situation you’d like to understand..."
+                required
+              ></textarea>
+              <div class="composer-bottom">
+                <span class="composer-hint">
+                  <span aria-hidden="true">↵</span> Enter to send · Shift + Enter for a new line
+                </span>
+                <div class="composer-actions">
+                  <span class="character-count" id="character-count">0 / 12,000</span>
+                  <button class="send-button" id="send-button" type="submit" aria-label="Send scenario">
+                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                      <path d="M10 15.8V4.2M5.2 9l4.8-4.8L14.8 9" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="composer-disclaimer">
+              This is general information, not a substitute for advice from a qualified lawyer.
+            </p>
+          </form>
+        </section>
+
+        <footer class="page-footer" id="about">
+          <span>Grounded in retrieved constitutional and treaty text.</span>
+          <span>For informational purposes only.</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

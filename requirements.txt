@@ -1,0 +1,10 @@
+falkordb>=1.0.0
+fastapi>=0.110
+certifi>=2024.2.2
+httpx>=0.27
+indianconstitution>=1.0
+pydantic>=2.6
+pydantic-settings>=2.2
+python-dotenv>=1.0
+sentence-transformers>=3.0
+uvicorn[standard]>=0.27
