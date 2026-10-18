@@ -1,7 +1,7 @@
 # Human Rights GraphRAG
 
 A Python 3.10+ application that retrieves narrowly relevant fundamental-rights
-provisions from FalkorDB and uses Groq or xAI to explain their applicability. It
+provisions from FalkorDB and uses an LLM provider to explain their applicability. It
 ingests Fundamental Rights in Part III (Articles 12–35 and selected inserted
 articles) from `indianconstitution`, plus selected UDHR and ICCPR provisions.
 It is an informational aid, not legal advice.
@@ -54,28 +54,13 @@ python -m human_rights_graphrag.app query "A peaceful protester was detained wit
 
 ## Configuration
 
-Copy `.env.example` to `.env`. `FALKORDB_HOST`, `FALKORDB_PORT`, and
+Copy `example.env` to `.env`. `FALKORDB_HOST`, `FALKORDB_PORT`, and
 `FALKORDB_GRAPH` configure the graph connection. Groq is the default AI
 provider: set `GROQ_API_KEY` and optionally configure `GROQ_MODEL` and
 `GROQ_BASE_URL`. The selected Groq model must be enabled for your account and
-support JSON mode. When switching an existing `.env` from xAI, set
-`AI_PROVIDER=groq`; an existing `XAI_API_KEY` will not be used. Alternatively,
-set `AI_PROVIDER=xai` and use `XAI_API_KEY`,
-`XAI_MODEL`, and `XAI_BASE_URL`. `EMBEDDING_MODEL` must remain the same between
-ingestion and query: the FalkorDB vector index dimension is derived from that
+support JSON mode. 
+The FalkorDB vector index dimension is derived from that
 model. `HF_TOKEN` is passed to the Hugging Face sentence-transformer loader.
-
-If your network uses an HTTPS inspection proxy or private certificate
-authority, export its trusted CA certificate chain in PEM format and set
-`LLM_CA_BUNDLE` to that file's path in `.env` (for example,
-`LLM_CA_BUNDLE=C:\certs\organization-ca-bundle.pem`). The application adds
-that CA to the standard trusted roots while keeping TLS certificate and
-hostname verification enabled. Obtain the CA certificate from your
-organization's IT/security team. For a throwaway local prototype only, set
-`LLM_VERIFY_TLS=false` to bypass certificate checks if your local network
-prevents a verified connection. This disables protection against man-in-the-
-middle attacks; do not use it on public networks or in production. TLS
-verification remains enabled by default.
 
 The selected treaty provisions are packaged in
 `human_rights_graphrag/data/international_rights.json`; these are not a
